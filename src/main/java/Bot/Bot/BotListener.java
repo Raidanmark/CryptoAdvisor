@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.entities.channel.unions.MessageChannelUnion;
 
 public class BotListener extends ListenerAdapter {
+
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         // Check if the message author is a bot
@@ -34,4 +35,6 @@ public class BotListener extends ListenerAdapter {
             channel.sendMessage("Available commands:\n!recommend - get cryptocurrency purchase recommendations\n!help - list of commands").queue();
         }
     }
+
+
 }

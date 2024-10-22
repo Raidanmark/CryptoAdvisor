@@ -19,7 +19,5 @@ public class RecommendSMA {
            // Otherwise, send the recommendations to the channel
            channel.sendMessage("Purchase recommendations:\n" + recommendation).queue();
       }
-
    }
-
 }

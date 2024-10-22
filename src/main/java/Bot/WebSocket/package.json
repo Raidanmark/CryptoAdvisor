@@ -1,0 +1,9 @@
+{
+  "method": "subscribe",
+  "params": {
+    "channel": "ticker",
+    "symbol": [
+      "ETH/USD", "BNB/USD", "BTC/USD", "SOL/USD", "XRP/USD"
+    ]
+  }
+}

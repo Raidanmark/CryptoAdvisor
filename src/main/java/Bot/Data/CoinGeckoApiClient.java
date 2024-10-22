@@ -21,7 +21,6 @@ public class CoinGeckoApiClient {
     private static final long TIME_WINDOW_MILLIS = 15_000L; // Time window in milliseconds (15 seconds)
     private final RateLimiter rateLimiter = new RateLimiter(MAX_REQUESTS_PER_MINUTE, TIME_WINDOW_MILLIS); // Rate limiter instance
 
-
     public List<Map<String, String>> getTopCoinsData(int limit) throws IOException {
         // Use Bot.Data.RateLimiter before executing the request
         rateLimiter.acquire();
@@ -51,13 +50,11 @@ public class CoinGeckoApiClient {
                 coinInfo.put("name", name); // Add the name to the map
                 coinList.add(coinInfo); // Add the coin info map to the list
             }
-
             return coinList; // Return the list of coin data
         }
     }
 
     // Create a new thread to perform the analysis (it will be in next updates)
-
     public List<PriceData> getClosingPrices(String coinId, int days) throws IOException {
         // Use Bot.Data.RateLimiter before executing the request
         rateLimiter.acquire();
@@ -76,7 +73,6 @@ public class CoinGeckoApiClient {
             // Define the type for deserializing the JSON response
             Type type = new TypeToken<Map<String, List<List<Double>>>>() {}.getType();
             Map<String, List<List<Double>>> marketData = gson.fromJson(jsonResponse, type); // Deserialize JSON into a map
-
 
             List<List<Double>> prices = marketData.get("prices"); // Get the list of prices from the market data
             List<PriceData> closingPrices = new ArrayList<>(); // Initialize a list to hold closing prices
