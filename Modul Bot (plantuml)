@@ -1,0 +1,21 @@
+@startuml
+entity Bot
+entity BotType
+entity Command
+entity ChatSession
+entity Message
+entity Method
+entity CommandRegistry
+entity BotListener
+
+
+
+Bot ||..|{ BotType
+Bot ||..|{ ChatSession
+ChatSession ||..|{ Command
+ChatSession ||..|| Status
+Command ||..|{ Message
+Command }|..|{ Status
+
+
+@enduml
