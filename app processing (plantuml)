@@ -1,0 +1,53 @@
+@startuml
+participant User
+participant Bot
+participant Method
+participant Model
+participant DataSource
+
+activate DataSource
+DataSource -> Model: Data Loading
+deactivate DataSource
+DataSource -> Model: Data update
+activate DataSource
+note right : Looped
+
+User -> Bot: Activate Bot
+activate Bot
+Bot -> User: Bot is Active 
+deactivate Bot
+User -> Bot: Start setup ticker&method 
+activate Bot
+User -> Bot: End setup ticker&method
+Bot -> Method: Setup
+
+
+note right : Loop started
+
+deactivate Bot
+activate Method
+Method -> Model: Data request
+activate Model
+Model -> Method: Data
+deactivate Model
+Method -> Bot: Signal
+deactivate Method
+activate Bot
+Bot -> User: Signal
+deactivate Bot
+
+User -> Bot: Stop setup
+activate Bot
+
+Bot -> Method: Stop setup
+note right : Loop Stoped
+Method -> Bot: Succes
+Bot -> User: Setup stoped
+deactivate Bot
+
+User -> Bot: Stop Bot
+activate Bot 
+Bot -> User: Bot stopped
+deactivate Bot
+
+@enduml
