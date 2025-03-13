@@ -1,0 +1,47 @@
+@startuml
+entity Ticker {
+{field} Ticker (String name)
+  {method} id : int
+  {method} name : String
+}
+
+entity Timeframe {
+{field} Timeframe (String name)
+  {method} id : int
+  {method} name : String
+}
+
+entity Candle {
+{field} Candle (open, close, low, high, vol)
+  {method} id : int
+  {method} open : double
+  {method} close : double
+  {method} low : double
+  {method} high : double
+  {method} vol : double
+  
+}
+
+entity Method {
+{field} Method (String name)
+  {method} id : int
+  {method} name : String
+}
+
+
+Ticker }|..|{ Timeframe
+Ticker }|..|{ Method
+Ticker ||..|{ Candle
+Timeframe ||..|{ Candle
+
+
+interface getMethodsService
+interface loadDataService
+interface updateDataService
+
+class CRUDdb
+class loadConfig
+
+
+
+@enduml
