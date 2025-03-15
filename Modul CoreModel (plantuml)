@@ -22,26 +22,8 @@ entity Candle {
   
 }
 
-entity Method {
-{field} Method (String name)
-  {method} id : int
-  {method} name : String
-}
 
-
-Ticker }|..|{ Timeframe
-Ticker }|..|{ Method
 Ticker ||..|{ Candle
 Timeframe ||..|{ Candle
-
-
-interface getMethodsService
-interface loadDataService
-interface updateDataService
-
-class CRUDdb
-class loadConfig
-
-
 
 @enduml
